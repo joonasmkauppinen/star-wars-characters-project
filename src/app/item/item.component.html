@@ -1,0 +1,22 @@
+<li
+  href="#"
+  class="list-group-item list-group-item-action list-group-item-light d-flex justify-content-between align-items-center"
+>
+  <h6 class="mr-3">{{ character.name }}</h6>
+  <div>
+    <button
+      class="btn btn-primary mr-2"
+      style="padding: 6px 30px"
+      (click)="onAssign('light')"
+    >
+      light
+    </button>
+    <button
+      class="btn btn-danger"
+      style="padding: 6px 30px"
+      (click)="onAssign('dark')"
+    >
+      dark
+    </button>
+  </div>
+</li>

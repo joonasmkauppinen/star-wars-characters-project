@@ -1,0 +1,29 @@
+<form (ngSubmit)="onSubmit(form)" #form="ngForm">
+  <div class="form-group">
+    <label for="name">Character name</label>
+    <input
+      class="form-control"
+      type="text"
+      id="name"
+      name="name"
+      [(ngModel)]="input"
+      required
+      #nameControl="ngModel"
+    />
+    <span
+      class="help-block"
+      *ngIf="nameControl.invalid && nameControl.touched"
+      style="color: rgb(255, 67, 67)"
+      >Please enter a name ✍</span
+    >
+  </div>
+  <div class="form-group">
+    <label for="side">Choose side</label>
+    <select class="form-control" name="side" id="side" ngModel>
+      <option *ngFor="let option of options" [value]="option.value">
+        {{ option.display }}
+      </option>
+    </select>
+  </div>
+  <button type="submit" class="btn btn-primary btn-block" [disabled]="form.invalid">Add Character</button>
+</form>
