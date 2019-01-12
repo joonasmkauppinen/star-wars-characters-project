@@ -2,32 +2,29 @@
   <ul class="nav nav-tabs">
     <li class="nav-item">
       <a
-        href="#"
-        (click)="onChoose('all')"
         class="nav-link"
-        [ngClass]="{ active: chosenList === 'all' }"
+        routerLink="/characters/all"
+        routerLinkActive="active"
         >All</a
       >
     </li>
     <li class="nav-item">
       <a
-        href="#"
-        (click)="onChoose('light')"
         class="nav-link"
-        [ngClass]="{ active: chosenList === 'light' }"
+        routerLink="/characters/light"
+        routerLinkActive="active"
         >Light</a
       >
     </li>
     <li class="nav-item">
       <a
-        href="#"
-        (click)="onChoose('dark')"
         class="nav-link"
-        [ngClass]="{ active: chosenList === 'dark' }"
+        routerLink="/characters/dark"
+        routerLinkActive="active"
         >Dark</a
       >
     </li>
   </ul>
 
-  <app-list [characters]="getCharacters()"></app-list>
+  <router-outlet></router-outlet>
 </div>
