@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { LogService } from './log.service';
+import { Subject } from 'rxjs';
 
 @Injectable()
 export class StarWarsService {
@@ -9,6 +10,7 @@ export class StarWarsService {
   ];
 
   private logService: LogService;
+  charactersChanged = new Subject<void>();
 
   constructor(logService: LogService) {
     this.logService = logService;
@@ -26,20 +28,23 @@ export class StarWarsService {
       return char.name === characterInfo.name;
     });
     this.characters[pos].side = characterInfo.side;
-    this.logService.writeLog(`Updated ${characterInfo.name}'s side to ${characterInfo.side}`);
+    this.charactersChanged.next();
+    this.logService.writeLog(
+      `Updated ${characterInfo.name}'s side to ${characterInfo.side}`
+    );
   }
 
   addCharacter(name, side) {
-
     // Check if character is alerady added.
-    const pos = this.characters.findIndex( char => char.name === name );
+    const pos = this.characters.findIndex(char => char.name === name);
     if (pos !== -1) {
       return;
     }
 
-    const newCharacter = {name: name, side: side};
+    const newCharacter = { name: name, side: side };
     this.characters.push(newCharacter);
-    console.log(`Added new character: ${newCharacter.name}\nSide: ${newCharacter.side}`);
+    console.log(
+      `Added new character: ${newCharacter.name}\nSide: ${newCharacter.side}`
+    );
   }
-
 }
