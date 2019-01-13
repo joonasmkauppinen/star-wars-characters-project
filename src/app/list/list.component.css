@@ -1,0 +1,11 @@
+.loading:empty::before {
+  content: 'loading...';
+  margin: 20px auto;
+  color: #b1b1b1;
+}
+
+.no-items:empty::before {
+  content: 'no characters added';
+  margin: 20px auto;
+  color: #b1b1b1;
+}
